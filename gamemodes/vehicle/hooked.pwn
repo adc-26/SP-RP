@@ -7,7 +7,7 @@ Settings_OnVehicleToggleGUI(playerid)
 		//Vehicle_HidePlayerGUI(playerid) ;
 		HideVehicleGUI(playerid) ;
 		Character [ playerid ] [ E_CHARACTER_HUD_VEHICLE] = false ;
-		SendClientMessage(playerid, COLOR_INFO, "You've turned off the vehicle GUI." ) ;
+		SendClientMessage(playerid, COLOR_INFO, "Tu as désactivé le GUI véhicule." ) ;
 	}
  
 	else {
@@ -15,7 +15,7 @@ Settings_OnVehicleToggleGUI(playerid)
 		new vehicleid = GetPlayerVehicleID(playerid) ;
 
 		Character [ playerid ] [ E_CHARACTER_HUD_VEHICLE] = true ;
-		SendClientMessage(playerid, COLOR_INFO, "You've turned on the vehicle GUI." ) ;
+		SendClientMessage(playerid, COLOR_INFO, "Tu as activé le GUI véhicule." ) ;
 
 		if ( vehicleid && GetPlayerVehicleSeat(playerid) <= 1 ) {
 
@@ -114,7 +114,7 @@ timer OnPlayerDC_RespawnVehicle[300000](veh_enum_id, veh_owner_id) {
 
 			if ( IsPlayerConnected( playerid ) ) {
 
-				SendClientMessage(playerid, COLOR_BLUE, "Your vehicles were about to be despawned but because you logged in again they've been restored.");
+				SendClientMessage(playerid, COLOR_BLUE, "Tes véhicules allaient être despawn. Ta reconnexion a permis qu'ils ne le soient pas.");
 				return true ;
 			}
 

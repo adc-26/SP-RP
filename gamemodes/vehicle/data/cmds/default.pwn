@@ -1,5 +1,3 @@
-
-
 CMD:carcheck(playerid, params[]) {
 
 	new vehicleid = Vehicle_GetClosestEntity(playerid);
@@ -47,7 +45,7 @@ CMD:toolkit(playerid) {
 
 	if ( ! PlayerVar [ playerid ] [ E_PLAYER_HAS_TOOLKIT ] ) {
 
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You don't have a toolkit! Buy one from a 24/7 or General Store.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You don't have a toolkit! Buy one from a 24/7 or General Store.");
 	}
 
 	new vehicleid = GetPlayerVehicleID ( playerid );
@@ -55,7 +53,7 @@ CMD:toolkit(playerid) {
 
 	if ( veh_enum_id == -1 ) {
 
-		return SendServerMessage ( playerid, COLOR_ERROR, "Syntax", "A3A3A3", "You're not in a proper vehicle.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "You're not in a proper vehicle.");
 	}
 
 	if ( IsPlayerInAnyVehicle(playerid) && GetPlayerState(playerid) == PLAYER_STATE_DRIVER ) {
@@ -65,7 +63,7 @@ CMD:toolkit(playerid) {
 
 		if ( health > 375 ) {
 
-			return SendServerMessage ( playerid, COLOR_ERROR, "Syntax", "A3A3A3", "Your vehicle still has more than 375 health. It's not broken!");
+			return SendServerMessage ( playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "Your vehicle still has more than 375 health. It's not broken!");
 		}
 
 	    Vehicle [ veh_enum_id ] [ E_VEHICLE_HEALTH ] = 450 ;
@@ -109,14 +107,14 @@ CMD:neon(playerid, params[]) {
 
 	if ( sscanf ( params, "i", color ) ) {
 
-		SendServerMessage ( playerid, COLOR_ERROR, "Syntax", "A3A3A3", "/neon [color]");
+		SendServerMessage ( playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "/neon [color]");
 		SendClientMessage(playerid, COLOR_GRAD0, "0: None - 1: pink - 2: yellow - 3: green - 4: red - 5: white - 6: blue");
 		return true ;
 	}
 
 	if ( color < 0 || color > 6 ) {
 
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "Color can't be less than 0 or more than 5.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Color can't be less than 0 or more than 5.");
 	}
 
 	new objectid ;
@@ -517,7 +515,7 @@ CMD:carattach(playerid, params[]) {
     
 	if( !IsPlayerInAnyVehicle(playerid) )
 	{
-	    SendServerMessage(playerid, COLOR_ERROR, "Error", "A3A3A3", "You need to be in a vehicle.");
+	    SendServerMessage(playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You need to be in a vehicle.");
 	    return 1;
 	}
 
@@ -527,7 +525,7 @@ CMD:carattach(playerid, params[]) {
 
 	if ( GetVehicleModel( GetPlayerVehicleID( playerid ) ) != 525 ) {
 
-		return SendServerMessage(playerid, COLOR_ERROR, "Error", "A3A3A3", "This vehicle isn't powerful enough to tow other cars. Get inside a towtruck.");
+		return SendServerMessage(playerid, COLOR_ERROR, "Erreur", "A3A3A3", "This vehicle isn't powerful enough to tow other cars. Get inside a towtruck.");
 	}	
 
 	new veh_enum_id ;
@@ -542,7 +540,7 @@ CMD:carattach(playerid, params[]) {
 
 			if ( veh_enum_id == -1 ) {
 
-				SendServerMessage(playerid, COLOR_ERROR, "Error", "A3A3A3", "You can't attach this car (invalid enum ID).");
+				SendServerMessage(playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You can't attach this car (invalid enum ID).");
 				return true ;
 			}
 
@@ -550,12 +548,12 @@ CMD:carattach(playerid, params[]) {
 
 				if ( Vehicle [ veh_enum_id ] [ E_VEHICLE_TYPE ] != E_VEHICLE_TYPE_PLAYER ) {
 
-					SendServerMessage(playerid, COLOR_ERROR, "Error", "A3A3A3", "You can only attach player vehicles.");
+					SendServerMessage(playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You can only attach player vehicles.");
 					return true ;
 				}
 
 				if ( IsVehicleOccupied (  Vehicle [ veh_enum_id] [ E_VEHICLE_ID ] ) ) {
-					SendServerMessage(playerid, COLOR_ERROR, "Error", "A3A3A3", "This vehicle is occupied. You can only attach unoccupied vehicles.");
+					SendServerMessage(playerid, COLOR_ERROR, "Erreur", "A3A3A3", "This vehicle is occupied. You can only attach unoccupied vehicles.");
 					return true ;
 				}
 
@@ -624,7 +622,7 @@ CMD:cardoor(playerid, params[])
 	}
 	else if (params[0] != 1)
 	{
-		return SendServerMessage ( playerid, COLOR_ERROR, "Syntax", "A3A3A3", "/cardoor [open/close]");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "/cardoor [open/close]");
 	}
 
 	if (seat != -1)
@@ -684,44 +682,44 @@ CMD:mydups(playerid, params[]) {
 	return true;
 }
 
-CMD:givecarkey(playerid, params[]){ return cmd_vdup(playerid, params); }
-CMD:givekey(playerid, params[]){ return cmd_vdup(playerid, params); }
-CMD:vkey(playerid, params[]){ return cmd_vdup(playerid, params); }
-CMD:vdup(playerid, params[]){
+CMD:givecarkey(playerid, params[]){ return cmd_vdonnerclef(playerid, params); }
+CMD:givekey(playerid, params[]){ return cmd_vdonnerclef(playerid, params); }
+CMD:vkey(playerid, params[]){ return cmd_vdonnerclef(playerid, params); }
+CMD:vdonnerclef(playerid, params[]){
 
 	if(IsPlayerIncapacitated(playerid, false))
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You can't use this command right now.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Tu ne peux pas utiliser cette commande en ce moment.");
 	
 	new target;
 
 	if(sscanf(params, "k<player>", target)) {
-		SendServerMessage ( playerid, COLOR_ERROR, "Syntax", "A3A3A3", "/vdup [playerid]");
+		SendServerMessage ( playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "/vdonnerclef [playerid]");
 		return SendServerMessage ( playerid, COLOR_ERROR, "Warning", "A3A3A3", "Duplicate keys are saved. Use /changelock to revoke a key.");
 	}
 
 	if(!IsPlayerConnected(target))
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "Target is not connected.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Le joueur cible n'est pas connecté.");
 
 	if(!IsPlayerNearPlayer(playerid, target, 10.0))
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You need to be closer to your taget to give them the keys.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Tu dois être proche de la cible pour donner tes clés.");
 
 	if(playerid == target)
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You already have keys to your own vehicle.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You already have keys to your own vehicle.");
 
 	if(!IsPlayerInAnyVehicle(playerid))
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You must be in a vehicle to duplicate it's keys.");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "You must be in a vehicle to duplicate it's keys.");
 
 	new vehicleid = GetPlayerVehicleID(playerid);
 	new veh_enum_id = Vehicle_GetEnumID ( vehicleid );
 
 	if(Vehicle[veh_enum_id][E_VEHICLE_OWNER] != Character[playerid][E_CHARACTER_ID])
-		return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "You can only duplicate keys to vehicles you own!");
+		return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Tu ne peux donner que les clés de tes véhicules!");
 
 	if ( Character[target][E_CHARACTER_VEH_DUP] != -1 )
-	 	return SendServerMessage ( playerid, COLOR_ERROR, "Error", "A3A3A3", "This player already has too many duplicate keys.");
+	 	return SendServerMessage ( playerid, COLOR_ERROR, "Erreur", "A3A3A3", "Ce joueur a trop de clés.");
 
-	SendServerMessage ( playerid, COLOR_SECURITY, "Keys", "A3A3A3", sprintf("You have given %s a pair of keys to your %s.", ReturnSettingsName(target, playerid), ReturnVehicleName(vehicleid)));
-	SendServerMessage ( target, COLOR_SECURITY, "Keys", "A3A3A3", sprintf("%s has given your a pair of keys to their %s.", ReturnSettingsName(playerid, target), ReturnVehicleName(vehicleid)));
+	SendServerMessage ( playerid, COLOR_SECURITY, "Keys", "A3A3A3", sprintf("Tu as donné à %s un double des clés de ton %s.", ReturnSettingsName(target, playerid), ReturnVehicleName(vehicleid)));
+	SendServerMessage ( target, COLOR_SECURITY, "Keys", "A3A3A3", sprintf("%s t'a donné un double des clés de son %s.", ReturnSettingsName(playerid, target), ReturnVehicleName(vehicleid)));
 
 	GiveVehicleKey(target, veh_enum_id);
 

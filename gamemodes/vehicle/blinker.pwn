@@ -290,17 +290,17 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys) {
 #endif
 
 
-CMD:carblink(playerid, params[])
+CMD:vclignotant(playerid, params[])
 {
 	new vehicleid = GetPlayerVehicleID(playerid);
 
-	if (!vehicleid ) return SendClientMessage(playerid, COLOR_ERROR, "You're not in a vehicle!");
-	if (GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendClientMessage(playerid, COLOR_ERROR, "You can't do this as you're not the driver.");
+	if (!vehicleid ) return SendClientMessage(playerid, COLOR_ERROR, "Tu n'es pas dans un véhicule!");
+	if (GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return SendClientMessage(playerid, COLOR_ERROR, "Tu ne peux pas faire ceci en tant que passager!");
 
 	new blinktype[6];
 
 	if (sscanf ( params, "s[6] ", blinktype))
-		return SendServerMessage(playerid, COLOR_ERROR, "Syntax", "A3A3A3", "/carblink [both / left / right / off]");
+		return SendServerMessage(playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "/vcligno(tant) [tous / gauche / droit / off]");
 
 	if (strcmp(blinktype, "off", true) == 0)
 	{
@@ -308,29 +308,29 @@ CMD:carblink(playerid, params[])
 		return true;
 	}
 
-	if (strcmp(blinktype, "both", true) == 0)
+	if (strcmp(blinktype, "tous", true) == 0)
 	{
 		SOLS_SetVehicleBlinkers(vehicleid, EI_TURN_SIGNAL_BOTH);
 		return true;
 	}
 
-	if (strcmp(blinktype, "left", true) == 0)
+	if (strcmp(blinktype, "gauche", true) == 0)
 	{
 		SOLS_SetVehicleBlinkers(vehicleid, EI_TURN_SIGNAL_LEFT);
 		return true;
 	}
 
-	if (strcmp(blinktype, "right", true) == 0)
+	if (strcmp(blinktype, "droit", true) == 0)
 	{
 		SOLS_SetVehicleBlinkers(vehicleid, EI_TURN_SIGNAL_RIGHT);
 		return true;
 	}
 
-	return SendServerMessage(playerid, COLOR_ERROR, "Syntax", "A3A3A3", "/carblink [all / left / right / off]");
+	return SendServerMessage(playerid, COLOR_ERROR, "Syntaxe", "A3A3A3", "/vcligno(tant) [tous / gauche / droit / off]");
 }
 
-CMD:blinkers(playerid, params[]) return cmd_carblink(playerid, params);
-CMD:carblinkers(playerid, params[]) return cmd_carblink(playerid, params);
+CMD:vcligno(playerid, params[]) return cmd_vclignotantk(playerid, params);
+CMD:clignotants(playerid, params[]) return cmd_vclignotant(playerid, params);
 
 // New one using predefined offsets:
 stock AddVehicleTurnSignals(vehicleid, E_TURN_SIGNAL_STATE:turn_signal)

@@ -4,7 +4,7 @@ new PlayerBar:p_VehicleSpeedoBarV2[MAX_PLAYERS] = PlayerBar: INVALID_PLAYER_BAR_
 
 public OnGameModeInit() {
 
-	g_VehicleSpeedoV2[0] = TextDrawCreate(499.0000, 101.0000, "MPH");
+	g_VehicleSpeedoV2[0] = TextDrawCreate(499.0000, 101.0000, "Km/h");
 	TextDrawFont(g_VehicleSpeedoV2[0], 2);
 	TextDrawLetterSize(g_VehicleSpeedoV2[0], 0.3000, 1.0000);
 	TextDrawColor(g_VehicleSpeedoV2[0], -1613958913);
@@ -14,7 +14,7 @@ public OnGameModeInit() {
 	TextDrawSetProportional(g_VehicleSpeedoV2[0], 1);
 	TextDrawTextSize(g_VehicleSpeedoV2[0], 0.0000, 0.0000);
 
-	g_VehicleSpeedoV2[1] = TextDrawCreate(499.0000, 111.0000, "Fuel");
+	g_VehicleSpeedoV2[1] = TextDrawCreate(499.0000, 111.0000, "Carburant");
 	TextDrawFont(g_VehicleSpeedoV2[1], 2);
 	TextDrawLetterSize(g_VehicleSpeedoV2[1], 0.3000, 1.0000);
 	TextDrawColor(g_VehicleSpeedoV2[1], -1613958913);
@@ -24,7 +24,7 @@ public OnGameModeInit() {
 	TextDrawSetProportional(g_VehicleSpeedoV2[1], 1);
 	TextDrawTextSize(g_VehicleSpeedoV2[1], 0.0000, 0.0000);
 
-	g_VehicleSpeedoV2[2] = TextDrawCreate(499.0000, 121.0000, "Miles");
+	g_VehicleSpeedoV2[2] = TextDrawCreate(499.0000, 121.0000, "Kilomètres");
 	TextDrawFont(g_VehicleSpeedoV2[2], 2);
 	TextDrawLetterSize(g_VehicleSpeedoV2[2], 0.3000, 1.0000);
 	TextDrawColor(g_VehicleSpeedoV2[2], -1613958913);
